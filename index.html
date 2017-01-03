@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" data-framework="javascript">
+  <head>
+    <meta charset="utf-8">
+    <title>VanillaJS</title>
+  </head>
+  <body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '192229094575266',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+    <button id="shareBtn" class="btn btn-success clearfix">Share</button>
+    <button id="grabBtn" class="btn btn-success clearfix">Grab Data</button>
+    <input type="text" name="name" id="name" value="" placeholder="Name">
+    <input type="text" name="email" id="email" value="" placeholder="Email">
+    <input type="text" name="number" id="number" value="" placeholder="Number">
+
+      <script>
+        document.getElementById('shareBtn').onclick = function() {
+          FB.ui({
+            method: 'share',
+            display: 'popup',
+            href: 'http://www.snclubs.com/join/',
+          }, function(response) {
+            debugger;
+          },function(error) {
+            debugger;
+          });
+        }
+        document.getElementById('grabBtn').onclick = function() {
+          FB.login(function(response){
+            // Handle the response object, like in statusChangeCallback() in our demo
+            // code.
+            debugger;
+          });
+        }
+      </script>
+  </body>
+</html>
